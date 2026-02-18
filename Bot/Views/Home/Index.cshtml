@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container">
+    <h1>Ask AI</h1>
+    @if (ViewData["Question"] != null)
+    {
+        <div class="alert alert-info">
+            <pre>@ViewData["PreviousResults"]</pre><br />
+        </div>
+    }
+    @if (ViewData["PreviousResults"] != null)
+    {
+        <div class="alert alert-info">
+            <pre>@ViewData["PreviousResults"]</pre><br />
+        </div>
+    }
+
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error:</strong> @ViewData["ErrorMessage"]
+        </div>
+    }
+    <form method="post" action="/Home/TalktoAI">
+        <div class="form-group">
+            <label for="userInput">Enter Data:</label>
+            <input type="text" id="question" name="question" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Send</button>
+    </form>
+</div>
